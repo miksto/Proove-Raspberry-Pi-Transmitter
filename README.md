@@ -9,16 +9,21 @@ or any similar kind will work
 **Power Outlets used:**
 https://www.kjell.com/se/sortiment/el-verktyg/smarta-hem/433-mhz/fjarrstrombrytare/utanpaliggande-brytare/telldus-fjarrstrombrytare-3680-w-3-pack-p50813
 
-To find out more about the protocol used by these power outlets i recommend this page that was of great help http://tech.jolowe.se/home-automation-rf-protocols/ .
-There is also information how to adjust the protocol to control other similar power outlets from other brands.
+**The Protocol**
+To learn more about the protocol and how to create commands for the power outlets I recommend a visit to these two pages:
+http://tech.jolowe.se/home-automation-rf-protocols/ and http://tech.jolowe.se/home-automation-rf-protocol-update/ .
+There you will also find information on how to adjust the protocol to control similar power outlets from other brands.
 
 ## Usage
 
 The script defaults to the GPIO pin BCM 22 which you might want to change.
 To find what pin and BCM number to use this page is very useful: https://pinout.xyz/
 
+The script uses **pigpio** to generate the pulses for the GPIO pin, and a **pigpio daemon** needs to to be running.
+Download and installation instructions are available here: http://abyz.co.uk/rpi/pigpio/download.html
 
-Running the script:
+Sending a command:
 ```
-./proove_433_transmitter.py <code>
+sudo pigpiod    #Start the pigpio daemon
+./proove_433_transmitter.py 00101010001001010010110001100000 #send command
 ```
