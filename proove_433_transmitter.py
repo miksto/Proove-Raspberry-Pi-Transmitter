@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import time
-import pigpio
 import sys
 
 class tx():
    def __init__(self, pi, gpio, repeats=6, bits=32, syncHigh=250, syncLow=2750, pauseHigh=250, pauseLow=10500, oneHigh=250, oneLow=250, zeroHigh=250, zeroLow=1500):
+      import pigpio
       self.pi = pi
       self.gpio = gpio
       self.repeats = repeats
@@ -24,6 +24,7 @@ class tx():
       pi.set_mode(gpio, pigpio.OUTPUT)
 
    def _make_waves(self):
+      import pigpio
       """
       Generates the basic waveforms needed to transmit codes.
       """
