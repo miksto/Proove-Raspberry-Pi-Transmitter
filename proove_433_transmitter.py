@@ -76,7 +76,7 @@ class tx():
          time.sleep(0.1)
 
 
-   def cancel(self):
+   def destroy(self):
       """
       Cancels the wireless code transmitter.
       """
@@ -84,6 +84,8 @@ class tx():
       self.pi.wave_delete(self._syncWave)
       self.pi.wave_delete(self._oneWave)
       self.pi.wave_delete(self._zeroWave)
+
+      self.pi.stop()
 
 if __name__ == "__main__":
 
@@ -103,7 +105,6 @@ if __name__ == "__main__":
          command = int(sys.argv[i+1], 2)
          tx.send(command)
 
-      tx.cancel()
-      pi.stop()
+      tx.destroy()
    else:
       print("Provide the command you want to send like: \"./proove_433_transmitter.py 00101010001001010010110001110000\"")
